@@ -6,7 +6,10 @@ import 'package:app/screens/dyscalculic/game/screen/gameplay.dart';
 import 'package:app/screens/dyscalculic/game/screen/main_menu.dart';
 import 'package:app/screens/dyscalculic/numberbased.dart';
 import 'package:app/screens/dyscalculic/wordbased.dart';
+import 'package:app/screens/dysgraphic/controllers/drawing_controller.dart';
 import 'package:app/screens/dysgraphic/dysgraphic.dart';
+import 'package:app/screens/dysgraphic/widgets/drawing_canvas.dart';
+import 'package:app/screens/dysgraphic/widgets/drawing_screen.dart';
 import 'package:app/screens/dyslexic/dyslexic.dart';
 import 'package:app/screens/home/controllers/dashboard.dart';
 import 'package:app/screens/home/home.dart';
@@ -41,7 +44,8 @@ class Sangyaan extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => QuestionProvider()),
         ChangeNotifierProvider(create: (_) => DashboardController()),
         ChangeNotifierProvider(create: (_) => WordBasedProvider()),
-        ChangeNotifierProvider(create: (_) => NumberBasedProvider())
+        ChangeNotifierProvider(create: (_) => NumberBasedProvider()),
+        ChangeNotifierProvider(create: (_) => DrawingController())
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -58,7 +62,8 @@ class Sangyaan extends StatelessWidget {
             "/wordbased": (context) => WordBasedQuiz(),
             "/numberbased": (context) => NumberBasedQuiz(),
             "/mainMenu": (context) => MainMenu(),
-            "/game": (context) => MathemagicaGame()
+            "/game": (context) => MathemagicaGame(),
+            "/drawing_screen": (context) => DrawingScreen()
           }),
     );
   }

@@ -30,6 +30,7 @@ class OptionsButton extends StatelessWidget {
       child: GestureDetector(
         onTap: () => Navigator.pushNamed(context, route),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Image.asset(imageUrl),
             Text(
