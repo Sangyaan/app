@@ -3,6 +3,7 @@ import 'package:app/screens/signup/controllers/password_controller.dart';
 import 'package:app/shared/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -15,12 +16,12 @@ class SignUpPage extends StatelessWidget {
         Provider.of<PasswordController>(context, listen: false);
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 75,
-          ),
           const SizedBox(height: 200, child: Logo()),
           const Text(
             "SignUp",
@@ -70,8 +71,15 @@ class SignUpPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 24, vertical: 12),
                     ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/taketest");
+                    onPressed: () async {
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+
+                      if (prefs.getBool("takenTest") == true) {
+                        Navigator.pushNamed(context, "/home");
+                      } else {
+                        Navigator.pushNamed(context, "/taketest");
+                      }
                     },
                     child: const Text(
                       'Submit',

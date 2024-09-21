@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ScorePage extends StatelessWidget {
-  const ScorePage({super.key});
+class TestScorePage extends StatelessWidget {
+  const TestScorePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,7 @@ class ScorePage extends StatelessWidget {
         text: "Dysgraphic",
         isChecked: false,
         isRecommended:
-            value.dysgraphicScore == "Dysgraphic Handwriting detected"
-                ? true
-                : false,
+            value.dysgraphicScore.startsWith("Dysgraphic") ? true : false,
       );
 
       final dyscalculic = ImageButton(
@@ -47,11 +45,7 @@ class ScorePage extends StatelessWidget {
               dyscalculic,
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: (dyslexic.isChecked ||
-                          dyscalculic.isChecked ||
-                          dysgraphic.isChecked)
-                      ? Colors.pinkAccent
-                      : Colors.grey,
+                  backgroundColor: Colors.pinkAccent,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -69,6 +63,7 @@ class ScorePage extends StatelessWidget {
                   if (dyslexic.isChecked ||
                       dyscalculic.isChecked ||
                       dysgraphic.isChecked) {
+                    await prefs.setBool("takenTest", true);
                     Navigator.pushNamed(context, "/home");
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
