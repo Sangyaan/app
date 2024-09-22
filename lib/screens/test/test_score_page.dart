@@ -39,7 +39,7 @@ class TestScorePage extends StatelessWidget {
               const SizedBox(height: 150, child: Logo()),
               Text("Your Score for Dyscalculic: ${value.dyscalculicScore}"),
               Text("The photo you used: ${value.dysgraphicScore}"),
-              Text("Please select one of the following: "),
+              const Text("Please select one of the following: "),
               dyslexic,
               dysgraphic,
               dyscalculic,
@@ -50,7 +50,7 @@ class TestScorePage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
                 onPressed: () async {
                   final SharedPreferences prefs =

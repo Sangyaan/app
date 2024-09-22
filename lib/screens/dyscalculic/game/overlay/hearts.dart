@@ -23,7 +23,7 @@ OverlayWidgetBuilder heartsBuilder = (BuildContext context, Game game) {
         return Positioned(
           top: 0,
           right: 0,
-          child: Container(
+          child: SizedBox(
             width: 200,
             height: 75,
             child: Center(child: Row(children: hearts)),

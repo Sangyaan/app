@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class WordBasedQuiz extends StatefulWidget {
+  const WordBasedQuiz({super.key});
+
   @override
   _DyscalculiaQuizState createState() => _DyscalculiaQuizState();
 }
@@ -77,7 +79,7 @@ class _DyscalculiaQuizState extends State<WordBasedQuiz> {
               ),
               child: Text(option),
             );
-          }).toList(),
+          }),
           const SizedBox(height: 20),
           // Display Correct or Wrong feedback
           if (_isAnswered)

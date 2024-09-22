@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DrawingScreenEnglishAlphabets extends StatelessWidget {
+  const DrawingScreenEnglishAlphabets({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Drawing Screen'),
+        title: const Text('Drawing Screen'),
       ),
       body: Column(
         children: [
@@ -43,9 +45,9 @@ class DrawingScreenEnglishAlphabets extends StatelessWidget {
                     // Trigger the animation
                     context
                         .read<DrawingControllerEnglishAlphabet>()
-                        .animateLetter(Duration(milliseconds: 10));
+                        .animateLetter(const Duration(milliseconds: 10));
                   },
-                  child: Text('Animate Letter'),
+                  child: const Text('Animate Letter'),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -55,7 +57,7 @@ class DrawingScreenEnglishAlphabets extends StatelessWidget {
                             listen: false);
                     drawingController.clearDrawing();
                   },
-                  child: Text('Clear Drawing'),
+                  child: const Text('Clear Drawing'),
                 )
               ],
             ),
@@ -121,12 +123,12 @@ class _DrawingPainter extends CustomPainter {
     TextPainter textPainter = TextPainter(
       text: TextSpan(
         text: 'Similarity: ${(similarity * 100).toStringAsFixed(2)}%',
-        style: TextStyle(color: Colors.black, fontSize: 16),
+        style: const TextStyle(color: Colors.black, fontSize: 16),
       ),
       textDirection: TextDirection.ltr,
     );
     textPainter.layout();
-    textPainter.paint(canvas, Offset(10, 10));
+    textPainter.paint(canvas, const Offset(10, 10));
   }
 
   @override

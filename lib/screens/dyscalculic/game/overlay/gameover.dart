@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// [gameOver] display the gameover menu where the player can restart a new game
 OverlayWidgetBuilder gameOver = (BuildContext context, Game game) {
   return Center(
-    child: Container(
+    child: SizedBox(
       width: 200,
       height: 200,
       child: Card(

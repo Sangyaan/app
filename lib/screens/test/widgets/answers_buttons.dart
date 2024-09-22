@@ -1,30 +1,38 @@
+import 'package:app/contants/colors.dart';
 import 'package:flutter/material.dart';
 
 Widget BuildAnswerOption(String option, VoidCallback onTap) {
-  return SizedBox(
-    width: 300,
-    child: GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-        margin: EdgeInsets.symmetric(vertical: 8), // Adds space between options
-        decoration: BoxDecoration(
-          color: Color(0xFFFF9051), // Background color
-          borderRadius: BorderRadius.circular(30), // Circular border rectangle
-          border: Border.all(
-            color: Colors.black, // Border color
-            width: 2, // Border width
-          ),
+  return Container(
+    height: 50,
+    decoration: BoxDecoration(
+      boxShadow: [
+        BoxShadow(
+          color: pinkButtonShadow,
+          offset: Offset(0, 3), // Vertical offset
+          blurRadius: 0, // No blur effect
         ),
-        child: Center(
-          child: Text(
-            option,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold, // Bold text
-              color: Colors.white, // Text color
-              fontSize: 18, // Font size for better readability
-            ),
-          ),
+      ],
+      borderRadius:
+          BorderRadius.circular(15), // Match the button's border radius
+    ),
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: pinkButton,
+        foregroundColor: Colors.white,
+        elevation: 0, // Disable default elevation
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      ),
+      onPressed: () {
+        onTap();
+      },
+      child: Text(
+        option,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
         ),
       ),
     ),

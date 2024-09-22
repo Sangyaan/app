@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DrawingScreenEnglishNumbers extends StatelessWidget {
+  const DrawingScreenEnglishNumbers({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Drawing Screen'),
+        title: const Text('Drawing Screen'),
       ),
       body: Column(
         children: [
@@ -43,9 +45,9 @@ class DrawingScreenEnglishNumbers extends StatelessWidget {
                     // Trigger the animation
                     context
                         .read<DrawingControllerEnglishNumbers>()
-                        .animateLetter(Duration(milliseconds: 10));
+                        .animateLetter(const Duration(milliseconds: 10));
                   },
-                  child: Text('Animate Letter'),
+                  child: const Text('Animate Letter'),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -55,7 +57,7 @@ class DrawingScreenEnglishNumbers extends StatelessWidget {
                             listen: false);
                     drawingController.clearDrawing();
                   },
-                  child: Text('Clear Drawing'),
+                  child: const Text('Clear Drawing'),
                 )
               ],
             ),
@@ -94,14 +96,11 @@ class _DrawingPainter extends CustomPainter {
     // Draw the placeholder letter as animated (from animatedOffsets)
     if (controller.animatedOffsets.isNotEmpty) {
       for (int i = 0; i < controller.animatedOffsets.length - 1; i++) {
-        if (controller.animatedOffsets[i] != null &&
-            controller.animatedOffsets[i + 1] != null) {
-          canvas.drawLine(
-            controller.animatedOffsets[i],
-            controller.animatedOffsets[i + 1],
-            greyPaint,
-          );
-        }
+        canvas.drawLine(
+          controller.animatedOffsets[i],
+          controller.animatedOffsets[i + 1],
+          greyPaint,
+        );
       }
     }
 
@@ -124,12 +123,12 @@ class _DrawingPainter extends CustomPainter {
     TextPainter textPainter = TextPainter(
       text: TextSpan(
         text: 'Similarity: ${(similarity * 100).toStringAsFixed(2)}%',
-        style: TextStyle(color: Colors.black, fontSize: 16),
+        style: const TextStyle(color: Colors.black, fontSize: 16),
       ),
       textDirection: TextDirection.ltr,
     );
     textPainter.layout();
-    textPainter.paint(canvas, Offset(10, 10));
+    textPainter.paint(canvas, const Offset(10, 10));
   }
 
   @override

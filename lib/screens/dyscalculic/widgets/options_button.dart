@@ -21,7 +21,7 @@ class OptionsButton extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -35,7 +35,7 @@ class OptionsButton extends StatelessWidget {
             Image.asset(imageUrl),
             Text(
               title,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             )
           ],
         ),

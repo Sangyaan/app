@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // While waiting for data, show a loading spinner
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
 
             if (dashboardController.isDyslexic == true) {
               print("ok1");
-              disorderButtons.add(GridButton(
+              disorderButtons.add(const GridButton(
                 imageUrl: "assets/images/dyslexic.png",
                 text: "Dyslexic",
                 route: "/dyslexic",
@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
 
             if (dashboardController.isDysgraphic == true) {
               print("ok2");
-              disorderButtons.add(GridButton(
+              disorderButtons.add(const GridButton(
                 imageUrl: "assets/images/dysgraphic.png",
                 text: "Dysgraphic",
                 route: "/dysgraphic",
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
 
             if (dashboardController.isDyscalculic == true) {
               print("ok3");
-              disorderButtons.add(GridButton(
+              disorderButtons.add(const GridButton(
                 imageUrl: "assets/images/dyscalculic.png",
                 text: "Dyscalculic",
                 route: "/dyscalculic",
@@ -65,10 +65,10 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.25,
-                  child: Text(
+                  child: const Text(
                       "Circular Dashboard here"), // TODO: use this place for dashboard
                 ),
-                Text(
+                const Text(
                   "Select your Learning Disorder",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
@@ -81,7 +81,7 @@ class HomePage extends StatelessWidget {
                     children: disorderButtons,
                   ),
                 if (disorderButtons.isEmpty)
-                  Center(
+                  const Center(
                     child: Text(
                       "No disorders available",
                       style: TextStyle(fontSize: 18, color: Colors.grey),
@@ -91,7 +91,7 @@ class HomePage extends StatelessWidget {
             );
           }
 
-          return Center(
+          return const Center(
             child: Text('Error loading data'),
           ); // Error or other states
         },

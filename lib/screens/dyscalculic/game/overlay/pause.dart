@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 /// [pauseBuilder] displays the pause menu when the game is paused
 OverlayWidgetBuilder pauseBuilder = (BuildContext context, Game game) {
   return Center(
-    child: Container(
+    child: SizedBox(
       width: 200,
       height: 200,
       child: Card(

@@ -1,12 +1,16 @@
 import 'dart:async';
 import 'dart:io'; // File handling for image
+import 'package:app/contants/colors.dart';
 import 'package:app/screens/test/controllers/question_controller.dart';
 import 'package:app/screens/test/widgets/answers_buttons.dart';
+import 'package:app/shared/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart'; // For image picking
 import 'package:provider/provider.dart';
 
 class TestPage extends StatefulWidget {
+  const TestPage({super.key});
+
   @override
   _TestPageState createState() => _TestPageState();
 }
@@ -72,36 +76,47 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     final questionProvider = Provider.of<QuestionProvider>(context);
     return Scaffold(
+      backgroundColor: backgroundEel,
       appBar: AppBar(
-        title: const Text('Discalculia Test'),
+        backgroundColor: Colors.transparent,
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: (questionProvider.currentQuestion != null &&
-                    questionProvider.currentQuestion is TextQuestion)
-                ? Text(
-                    'Time: $_timeRemaining',
-                    style: const TextStyle(fontSize: 18),
-                  )
-                : const SizedBox(),
-          ),
+          (questionProvider.currentQuestion != null &&
+                  questionProvider.currentQuestion is TextQuestion)
+              ? Text(
+                  'Time: $_timeRemaining',
+                  style: const TextStyle(fontSize: 18, color: Colors.white),
+                )
+              : const SizedBox(),
         ],
       ),
-      body: Center(
-        child: questionProvider.isLoading
-            ? const CircularProgressIndicator()
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (questionProvider.currentQuestion != null &&
-                      questionProvider.currentQuestion is TextQuestion)
-                    _buildTextQuestion(context,
-                        questionProvider.currentQuestion as TextQuestion),
-                  if (questionProvider.currentQuestion != null &&
-                      questionProvider.currentQuestion is ImageQuestion)
-                    _buildImageQuestion(context),
-                ],
-              ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: questionProvider.isLoading
+                ? const Column(
+                    children: [
+                      CircularProgressIndicator(),
+                      Text(
+                        "Preparing questions for the test!",
+                        style: TextStyle(color: Colors.white),
+                      )
+                    ],
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (questionProvider.currentQuestion != null &&
+                          questionProvider.currentQuestion is TextQuestion)
+                        _buildTextQuestion(context,
+                            questionProvider.currentQuestion as TextQuestion),
+                      if (questionProvider.currentQuestion != null &&
+                          questionProvider.currentQuestion is ImageQuestion)
+                        _buildImageQuestion(context),
+                    ],
+                  ),
+          ),
+        ),
       ),
     );
   }
@@ -114,17 +129,29 @@ class _TestPageState extends State<TestPage> {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Text(
-            question.questionText,
-            style: TextStyle(fontSize: 24),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            width: MediaQuery.of(context).size.width * 0.8,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(25), color: Colors.white),
+            child: Text(
+              question.questionText,
+              style: const TextStyle(fontSize: 24),
+            ),
           ),
         ),
         ...question.options.map((option) {
-          return BuildAnswerOption(option, () {
-            questionProvider.checkDiscalculiaAnswer(question, option);
-            moveToNextQuestion();
-          });
-        }).toList(),
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.65,
+              child: BuildAnswerOption(option, () {
+                questionProvider.checkDiscalculiaAnswer(question, option);
+                moveToNextQuestion();
+              }),
+            ),
+          );
+        }),
       ],
     );
   }
@@ -134,23 +161,117 @@ class _TestPageState extends State<TestPage> {
 
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Text(
-            'Please upload an image of your handwritten note',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-        ElevatedButton.icon(
-          onPressed: () => _pickImage(ImageSource.camera),
-          icon: Icon(Icons.camera),
-          label: Text('Capture Image'),
-        ),
-        ElevatedButton.icon(
-          onPressed: () => _pickImage(ImageSource.gallery),
-          icon: Icon(Icons.photo),
-          label: Text('Select from Gallery'),
-        ),
+        Column(children: [
+          SizedBox(height: 145, child: Logo()),
+          Image.asset('assets/images/question.png'),
+          SizedBox(height: 20),
+          Container(
+            height: 300,
+            width: 300,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(20)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text(
+                  "Take Screening Test \nfor \Dysgraphia",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 150,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: blueShadow,
+                                offset: Offset(0, 3), // Vertical offset
+                                blurRadius: 0, // No blur effect
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(
+                                15), // Match the button's border radius
+                          ),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: buttonBlue,
+                              foregroundColor: Colors.white,
+                              elevation: 0, // Disable default elevation
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24, vertical: 12),
+                            ),
+                            onPressed: () {
+                              _pickImage(ImageSource.camera);
+                            },
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Icon(Icons.camera),
+                                Text(
+                                  'Capture  Note',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )),
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: blueShadow,
+                                offset: Offset(0, 3), // Vertical offset
+                                blurRadius: 0, // No blur effect
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(
+                                15), // Match the button's border radius
+                          ),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: buttonBlue,
+                              foregroundColor: Colors.white,
+                              elevation: 0, // Disable default elevation
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24, vertical: 12),
+                            ),
+                            onPressed: () {
+                              _pickImage(ImageSource.gallery);
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                const Icon(Icons.photo),
+                                const Text(
+                                  'Pick a photo',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
+        ]),
         if (_selectedImage != null)
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -159,12 +280,12 @@ class _TestPageState extends State<TestPage> {
                 SizedBox(
                     height: MediaQuery.of(context).size.height * 0.5,
                     child: Image.file(_selectedImage!)),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 ElevatedButton.icon(
                   onPressed: () =>
                       _confirmAndSendImage(), // Confirm & Send button
-                  icon: Icon(Icons.send),
-                  label: Text('Confirm & Send'),
+                  icon: const Icon(Icons.send),
+                  label: const Text('Confirm & Send'),
                 ),
               ],
             ),

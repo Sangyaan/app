@@ -1,19 +1,10 @@
 import 'package:app/contants/letter_a.dart';
-import 'package:app/contants/letter_b.dart';
-import 'package:app/contants/letter_ka.dart';
-import 'package:app/contants/letter_ta.dart';
 import 'package:app/contants/letter_ya.dart';
 import 'package:app/contants/number_4.dart';
-import 'package:app/contants/number_5.dart';
-import 'package:app/contants/number_6.dart';
-import 'package:app/contants/number_dui.dart';
-import 'package:app/contants/number_ek.dart';
-import 'package:app/contants/letter_y.dart';
 import 'package:app/contants/number_tin.dart';
 import 'package:app/screens/dyscalculic/controllers/numberbasedcontroller.dart';
 import 'package:app/screens/dyscalculic/controllers/wordbasedcontroller.dart';
 import 'package:app/screens/dyscalculic/dyscalculic.dart';
-import 'package:app/screens/dyscalculic/game/game/game.dart';
 import 'package:app/screens/dyscalculic/game/screen/gameplay.dart';
 import 'package:app/screens/dyscalculic/game/screen/main_menu.dart';
 import 'package:app/screens/dyscalculic/numberbased.dart';
@@ -36,6 +27,7 @@ import 'package:app/screens/signup/controllers/email_controller.dart';
 import 'package:app/screens/signup/controllers/password_controller.dart';
 import 'package:app/screens/signup/signup.dart';
 import 'package:app/screens/test/controllers/question_controller.dart';
+import 'package:app/screens/test/dyscalculia_test.dart';
 import 'package:app/screens/test/test_score_page.dart';
 import 'package:app/screens/test/take_test.dart';
 import 'package:app/screens/test/test.dart';
@@ -76,28 +68,29 @@ class Sangyaan extends StatelessWidget {
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: "/dysgraphic",
+          initialRoute: "/taketest",
           routes: {
             '/signup': (context) => const SignUpPage(),
             "/taketest": (context) => const TakeTestPage(),
-            "/test": (context) => TestPage(),
+            "/test": (context) => const TestPage(),
             "/score": (context) => const TestScorePage(),
             "/home": (context) => const HomePage(),
             "/dyslexic": (context) => const DyslexicPage(),
             "/dysgraphic": (context) => const DysgraphicPage(),
             "/dyscalculic": (context) => const DyscalculicPage(),
-            "/wordbased": (context) => WordBasedQuiz(),
-            "/numberbased": (context) => NumberBasedQuiz(),
-            "/mainMenu": (context) => MainMenu(),
-            "/game": (context) => MathemagicaGame(),
+            "/wordbased": (context) => const WordBasedQuiz(),
+            "/numberbased": (context) => const NumberBasedQuiz(),
+            "/mainMenu": (context) => const MainMenu(),
+            "/game": (context) => const MathemagicaGame(),
             "/drawing_screen_english_numbers": (context) =>
-                DrawingScreenEnglishNumbers(),
+                const DrawingScreenEnglishNumbers(),
             "/drawing_screen_english_alphabets": (context) =>
-                DrawingScreenEnglishAlphabets(),
+                const DrawingScreenEnglishAlphabets(),
             "/drawing_screen_nepali_numbers": (context) =>
-                DrawingScreenNepaliNumbers(),
+                const DrawingScreenNepaliNumbers(),
             "/drawing_screen_nepali_letters": (context) =>
-                DrawingScreenNepaliLetters()
+                const DrawingScreenNepaliLetters(),
+            "/takeDyscalculiaTest": (context) => const TakeDyslexiaTest()
           }),
     );
   }
