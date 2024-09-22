@@ -74,8 +74,8 @@ class _DyscalculiaQuizState extends State<WordBasedQuiz> {
                         ? Colors.green // Correct answer is green
                         : option == _selectedAnswer
                             ? Colors.red // Selected wrong answer is red
-                            : Colors.blue) // Unselected options remain blue
-                    : Colors.blue, // Default color before answering
+                            : Colors.white) // Unselected options remain blue
+                    : Colors.white, // Default color before answering
               ),
               child: Text(option),
             );
