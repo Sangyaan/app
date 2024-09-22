@@ -1,3 +1,4 @@
+import 'package:app/contants/colors.dart';
 import 'package:flutter/material.dart';
 
 class GridButton extends StatelessWidget {
@@ -13,15 +14,16 @@ class GridButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.25,
+      height: MediaQuery.of(context).size.height * 0.2,
+      width: MediaQuery.of(context).size.width * 0.34,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: featherGreen,
         borderRadius: BorderRadius.circular(8.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
+            color: shadowGreen,
+            spreadRadius: 0,
+            blurRadius: 0,
             offset: const Offset(0, 3),
           ),
         ],
@@ -29,7 +31,13 @@ class GridButton extends StatelessWidget {
       child: GestureDetector(
         onTap: () => Navigator.pushNamed(context, route),
         child: Column(
-          children: [Image.asset(imageUrl), Text(text)],
+          children: [
+            Image.asset(imageUrl),
+            Text(
+              text,
+              style: TextStyle(color: Colors.white),
+            )
+          ],
         ),
       ),
     );

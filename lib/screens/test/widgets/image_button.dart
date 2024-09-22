@@ -60,7 +60,7 @@ class _ImageButtonState extends State<ImageButton> {
                     widget.text,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),

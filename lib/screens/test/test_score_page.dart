@@ -1,3 +1,4 @@
+import 'package:app/contants/colors.dart';
 import 'package:app/screens/test/controllers/question_controller.dart';
 import 'package:app/screens/test/widgets/image_button.dart';
 import 'package:app/shared/widgets/logo.dart';
@@ -10,53 +11,110 @@ class TestScorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<QuestionProvider>(builder: (context, value, child) {
-      final dyslexic = ImageButton(
-          imageUrl: "assets/images/dyslexic.png",
-          text: "Dyslexic",
-          isChecked: false,
-          isRecommended: false);
+    final questionProvider =
+        Provider.of<QuestionProvider>(context, listen: false);
 
-      final dysgraphic = ImageButton(
-        imageUrl: "assets/images/dysgraphic.png",
-        text: "Dysgraphic",
-        isChecked: false,
-        isRecommended:
-            value.dysgraphicScore.startsWith("Dysgraphic") ? true : false,
-      );
+    final dyslexic = ImageButton(
+      imageUrl: "assets/images/dyslexic.png",
+      text: "Dyslexic",
+      isChecked: false,
+    );
 
-      final dyscalculic = ImageButton(
-        imageUrl: "assets/images/dyscalculic.png",
-        text: "Dyscalculic",
-        isChecked: false,
-        isRecommended: value.dyscalculicScore < 3 ? true : false,
-      );
-      return Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 150, child: Logo()),
-              Text("Your Score for Dyscalculic: ${value.dyscalculicScore}"),
-              Text("The photo you used: ${value.dysgraphicScore}"),
-              const Text("Please select one of the following: "),
-              dyslexic,
-              dysgraphic,
-              dyscalculic,
-              ElevatedButton(
+    final dysgraphic = ImageButton(
+      imageUrl: "assets/images/dysgraphic.png",
+      text: "Dysgraphic",
+      isChecked: false,
+      isRecommended: (questionProvider.dysgraphicScore.startsWith("Dysgraphic")
+          ? true
+          : false),
+    );
+
+    final dyscalculic = ImageButton(
+      imageUrl: "assets/images/dyscalculic.png",
+      text: "Dyscalculic",
+      isChecked: false,
+      isRecommended: ((questionProvider.dyscalculicScore < 2) ? true : false),
+    );
+
+    return Scaffold(
+        backgroundColor: backgroundEel,
+        body: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            const SizedBox(height: 135, child: Logo()),
+            Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15), color: Colors.white),
+              child: const Text(
+                'According to the screening test',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: 100,
+                  child: Divider(
+                    thickness: 1,
+                    color: textGrey,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    'Available Learning Path',
+                    style: TextStyle(color: textGrey),
+                  ),
+                ),
+                SizedBox(
+                  width: 100,
+                  child: Divider(
+                    thickness: 1,
+                    color: textGrey,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            dysgraphic,
+            const SizedBox(
+              height: 50,
+            ),
+            dyscalculic,
+            const SizedBox(
+              height: 75,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.6,
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                    color: blueShadow,
+                    offset: const Offset(0, 4),
+                    blurRadius: 0)
+              ], borderRadius: BorderRadius.circular(15)),
+              child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.pinkAccent,
+                  backgroundColor: buttonBlue,
                   foregroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
                 onPressed: () async {
                   final SharedPreferences prefs =
                       await SharedPreferences.getInstance();
 
-                  await prefs.setBool("dyslexic", dyslexic.isChecked);
                   await prefs.setBool("dysgraphic", dysgraphic.isChecked);
                   await prefs.setBool("dyscalculic", dyscalculic.isChecked);
 
@@ -77,14 +135,12 @@ class TestScorePage extends StatelessWidget {
                   'Submit',
                   style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
-      );
-    });
+            ),
+          ],
+        ));
   }
 }

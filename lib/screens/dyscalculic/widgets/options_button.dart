@@ -1,3 +1,4 @@
+import 'package:app/contants/colors.dart';
 import 'package:flutter/material.dart';
 
 class OptionsButton extends StatelessWidget {
@@ -14,13 +15,13 @@ class OptionsButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.lightBlueAccent,
+        color: featherGreen,
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
+            color: shadowGreen,
+            spreadRadius: 0,
+            blurRadius: 0,
             offset: const Offset(0, 3),
           ),
         ],
@@ -35,7 +36,10 @@ class OptionsButton extends StatelessWidget {
             Image.asset(imageUrl),
             Text(
               title,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.white),
             )
           ],
         ),

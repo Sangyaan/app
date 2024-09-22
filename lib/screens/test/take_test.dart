@@ -35,17 +35,26 @@ class TakeTestPage extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            const SizedBox(height: 135, child: Logo()),
+            const SizedBox(height: 100, child: Logo()),
+            Text(
+              "Want to take a screening test?",
+              style: TextStyle(color: textGrey),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               decoration: BoxDecoration(boxShadow: [
                 BoxShadow(
-                    color: shadowGreen, offset: Offset(0, 3), blurRadius: 0)
+                    color: pinkButtonShadow,
+                    offset: Offset(0, 3),
+                    blurRadius: 0)
               ], borderRadius: BorderRadius.circular(15)),
               width: MediaQuery.of(context).size.width * 0.7,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  shadowColor: shadowGreen,
-                  backgroundColor: featherGreen,
+                  shadowColor: pinkButtonShadow,
+                  backgroundColor: pinkButton,
                   foregroundColor: Colors.white,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
@@ -61,7 +70,7 @@ class TakeTestPage extends StatelessWidget {
                   'Take Test',
                   style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -145,10 +154,7 @@ class TakeTestPage extends StatelessWidget {
                 },
                 child: const Text(
                   'Submit',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ),
               ),
             ),

@@ -67,8 +67,9 @@ class Sangyaan extends StatelessWidget {
             create: (_) => DrawingControllerNepaliNumbers(number_tin))
       ],
       child: MaterialApp(
+          theme: ThemeData(fontFamily: "Fredoka"),
           debugShowCheckedModeBanner: false,
-          initialRoute: "/taketest",
+          initialRoute: "/signup",
           routes: {
             '/signup': (context) => const SignUpPage(),
             "/taketest": (context) => const TakeTestPage(),

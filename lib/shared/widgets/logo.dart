@@ -10,11 +10,21 @@ class Logo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: 100,
+            height: 75,
             width: 100,
-            child: Image.asset(
-              "assets/images/logo.png",
-              height: 20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/logo.png",
+                  height: 50,
+                ),
+                const Text(
+                  "संज्ञान",
+                  style: TextStyle(color: Colors.green, fontSize: 20),
+                )
+              ],
             ),
           ),
           // const Text(
