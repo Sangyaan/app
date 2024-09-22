@@ -1,5 +1,5 @@
-import 'package:app/contants/colors.dart';
-import 'package:app/screens/dyscalculic/widgets/options_button.dart';
+import 'package:app/shared/contants/colors.dart';
+import 'package:app/shared/widgets/options_button.dart';
 import 'package:app/shared/widgets/logo.dart';
 import 'package:flutter/material.dart';
 
@@ -62,7 +62,7 @@ class DysgraphicPage extends StatelessWidget {
                   SizedBox(height: 20),
                   OptionsButton(
                     imageUrl: "assets/images/nepali_numbers.png",
-                    title: "Nepali Nunbers",
+                    title: "Nepali Numbers",
                     route: "/drawing_screen_nepali_numbers",
                   ),
                   SizedBox(height: 20),

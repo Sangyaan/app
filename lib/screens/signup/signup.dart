@@ -1,4 +1,4 @@
-import 'package:app/contants/colors.dart';
+import 'package:app/shared/contants/colors.dart';
 import 'package:app/screens/signup/controllers/email_controller.dart';
 import 'package:app/screens/signup/controllers/password_controller.dart';
 import 'package:app/shared/widgets/logo.dart';

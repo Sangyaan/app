@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:app/contants/network.dart';
+import 'package:app/shared/contants/network.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 

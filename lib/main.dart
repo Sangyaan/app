@@ -1,7 +1,7 @@
-import 'package:app/contants/letter_a.dart';
-import 'package:app/contants/letter_ya.dart';
-import 'package:app/contants/number_4.dart';
-import 'package:app/contants/number_tin.dart';
+import 'package:app/shared/contants/letter_a.dart';
+import 'package:app/shared/contants/letter_ya.dart';
+import 'package:app/shared/contants/number_4.dart';
+import 'package:app/shared/contants/number_tin.dart';
 import 'package:app/screens/dyscalculic/controllers/numberbasedcontroller.dart';
 import 'package:app/screens/dyscalculic/controllers/wordbasedcontroller.dart';
 import 'package:app/screens/dyscalculic/dyscalculic.dart';

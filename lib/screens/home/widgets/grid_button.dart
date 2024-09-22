@@ -1,4 +1,4 @@
-import 'package:app/contants/colors.dart';
+import 'package:app/shared/contants/colors.dart';
 import 'package:flutter/material.dart';
 
 class GridButton extends StatelessWidget {
@@ -24,7 +24,7 @@ class GridButton extends StatelessWidget {
             color: shadowGreen,
             spreadRadius: 0,
             blurRadius: 0,
-            offset: const Offset(0, 3),
+            offset: const Offset(0, 5),
           ),
         ],
       ),

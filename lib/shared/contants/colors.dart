@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 final Color featherGreen = Color.fromARGB(255, 139, 192, 32);
-final Color shadowGreen = Color.fromARGB(255, 70, 161, 0);
+final Color shadowGreen = Color.fromARGB(255, 42, 96, 1);
 final Color backgroundEel = Color.fromARGB(255, 19, 31, 36);
 final Color maskGreen = Color.fromARGB(255, 136, 226, 25);
 final Color buttonBlue = Color.fromARGB(255, 28, 177, 246);

@@ -1,4 +1,4 @@
-import 'package:app/contants/colors.dart';
+import 'package:app/shared/contants/colors.dart';
 import 'package:app/screens/home/controllers/dashboard.dart';
 import 'package:app/screens/home/widgets/grid_button.dart';
 import 'package:app/shared/widgets/logo.dart';
@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                                  "2 days",
+                                  "1 day",
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.grey[700],
@@ -107,7 +107,7 @@ class HomePage extends StatelessWidget {
                                 ),
                                 SizedBox(height: 8),
                                 Text(
-                                  "1200",
+                                  "10",
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.grey[700],
@@ -127,7 +127,7 @@ class HomePage extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                                  "Intermediate",
+                                  "Novice",
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.grey[700],
@@ -142,7 +142,7 @@ class HomePage extends StatelessWidget {
                           decoration: BoxDecoration(boxShadow: [
                             BoxShadow(
                                 color: blueShadow,
-                                offset: Offset(0, 3),
+                                offset: Offset(0, 5),
                                 blurRadius: 0)
                           ], borderRadius: BorderRadius.circular(15)),
                           width: MediaQuery.of(context).size.width * 0.7,
@@ -159,8 +159,11 @@ class HomePage extends StatelessWidget {
                                   horizontal: 24, vertical: 12),
                             ),
                             onPressed: () {
-                              Navigator.pushNamed(
-                                  context, "/takeDyscalculiaTest");
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Don't get distracted!"),
+                                ),
+                              );
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,

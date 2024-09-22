@@ -1,4 +1,4 @@
-import 'package:app/contants/colors.dart';
+import 'package:app/shared/contants/colors.dart';
 import 'package:flutter/material.dart';
 
 Widget BuildAnswerOption(String option, VoidCallback onTap) {

@@ -1,5 +1,5 @@
-import 'package:app/contants/colors.dart';
-import 'package:app/screens/dyscalculic/widgets/options_button.dart';
+import 'package:app/shared/contants/colors.dart';
+import 'package:app/shared/widgets/options_button.dart';
 import 'package:app/shared/widgets/logo.dart';
 import 'package:flutter/material.dart';
 

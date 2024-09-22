@@ -1,4 +1,4 @@
-import 'package:app/contants/colors.dart';
+import 'package:app/shared/contants/colors.dart';
 import 'package:app/screens/test/controllers/question_controller.dart';
 import 'package:app/screens/test/widgets/image_button.dart';
 import 'package:app/shared/widgets/logo.dart';
