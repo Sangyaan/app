@@ -58,15 +58,6 @@ class SignUpPage extends StatelessWidget {
                     style: TextStyle(color: Colors.white),
                   ),
                   const SizedBox(height: 20),
-                  TextField(
-                    controller: passwordController.retry,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      labelText: 'Retype Password',
-                      border: OutlineInputBorder(),
-                    ),
-                    style: TextStyle(color: Colors.white),
-                  ),
                   const SizedBox(height: 20),
                   SizedBox(
                     width: 300,
@@ -92,7 +83,7 @@ class SignUpPage extends StatelessWidget {
                         }
                       },
                       child: const Text(
-                        'Submit',
+                        'Continue Learning',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
